@@ -48,9 +48,9 @@ with st.expander("Upload a netCDF4 file from the Vectrino Profiler 👇",
 
 "****"
 
-step_int = stx.stepper_bar(steps=["🏜️ Bottom Distance", "⏱️ Velocity Readings", "☀️ Summary"])
-
 if uploadedFile:
+
+    step_int = stx.stepper_bar(steps=["🏜️ Bottom Distance", "⏱️ Velocity Readings", "☀️ Summary"])
 
     with tempfile.NamedTemporaryFile() as ncFile:
         
@@ -272,3 +272,4 @@ if uploadedFile:
             From this file, you have obtained a (Velocity - Elevation) pair to plot in your 
             velocity profile.
             """
+
