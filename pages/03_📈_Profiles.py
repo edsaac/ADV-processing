@@ -10,9 +10,34 @@ st.set_page_config(
 r"""
 # **Profiles and fitting data**
 
+## Profile canvas
+
 ## Principal velocity profile
 
 ### The log-law
+
+First, we define the **viscous lenghtscale** $\delta_v$
+
+$$
+    \delta_v = \dfrac{\nu}{u^*}
+$$
+
+And use this lenghtscale to obtain a dimensionless depth $y^+$
+
+$$
+    y^+ = \dfrac{y}{\delta_v}
+$$
+
+The **log-law** region of a channel flow 
+
+$$
+    \mathsf{for:}
+    y^+ > 30 \, \mathsf{and} \, y/\delta = 0.3 \\
+    u^+ = \dfrac{1}{\kappa} \ln{y^+} + B
+$$
+
+Where $\kappa = 0.41$ is the von Kármán constant and $B = 5.2$ 
+is a fitting constant.
 
 ## Other velocity profiles
 

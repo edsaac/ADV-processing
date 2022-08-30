@@ -17,6 +17,8 @@ st.set_page_config(
 if "_gist" not in st.session_state.keys():
     st.session_state["_gist"] = [0,0,0,0]
 
+if "_flumeDepth" not in st.session_state.keys():
+    st.session_state["_flumeDepth"] = 0.15
 
 "# **Data processing for turbulence analysis**"
 
@@ -41,7 +43,6 @@ the corresponding velocities were taken.
 ⏱️ Then, we use the velocity readings to extract their mean over time and the
 velocity fluctuation time series.
 
-☀️ Finally, a (mean velocity, depth) pair is obtained from each file. 
 """)
 
 st.warning("Let's start exploring a file:")
@@ -126,6 +127,8 @@ if uploadedFile:
                 probeDist  = st.number_input("Enter SampleDistance [m]:",0.00,0.10,0.05,0.001,"%.3f")
                 filtered_bottom['SamplePositionZ'] = filtered_bottom['BottomDistance'] - probeDist
 
+                st.session_state["_flumeDepth"] = flumeDepth
+
                 "****"
 
                 with st.expander("🍋 Our processed data",expanded=False):
@@ -150,11 +153,12 @@ if uploadedFile:
                 fig = go.Figure()
                 
                 fig.update_layout(
+                    showlegend=False,
                     autosize=True,
                     hovermode='closest',
                     height=400,
                     title={
-                        'text': "📈 Sample position z over time",
+                        'text': "📈 Sample position over time",
                         'y': 0.9,
                         'x': 0.5,
                         'xanchor': 'center',
@@ -165,7 +169,7 @@ if uploadedFile:
                     yaxis={
                         'title':"Bottom Distance (m)",
                         'exponentformat' : "power",
-                        'range':[0,flumeDepth]},
+                        'range':[0,1.1*flumeDepth]},
                     font={
                         'size': 14}
                     )
@@ -174,13 +178,25 @@ if uploadedFile:
                             go.Scatter(
                                 x = filtered_bottom['time'],
                                 y = filtered_bottom['SamplePositionZ'],
-                                name = "Readings",
+                                name = "Sampling position",
                                 mode = 'lines+markers',
-                                legendgroup = "experiments",
-                                legendgrouptitle_text = "Experimental data",
                                 marker={'size' : 8,
                                         'symbol': "x" }
                                 ))
+
+                fig.add_hline(y=flumeDepth,
+                                annotation={
+                                    'text':"Water surface",
+                                    'font_size':12,
+                                    'font_color': "#1E90FF"     
+                                },
+                                annotation_position="top left",
+                                line = {
+                                    'width':2,
+                                    'color':"#1E90FF",
+                                    'dash':'dash'
+                                }
+                            )
                 
                 st.plotly_chart(fig,use_container_width=True)
 
@@ -191,17 +207,30 @@ if uploadedFile:
             """
             ## ⏱️ Velocity Readings
             """
-
-            r"""
-            Each component of the velocity timeseries $\vec{u}(t)$ can be decomposed 
-            into its mean $U$ and a series of fluctuations $u'(t)$. For instance:
-
-            | Component    | Decomposition      | 
-            |--------------|--------------------|
-            | `VelocityX`  | $u(t) = U + u'(t)$ |
-            | `VelocityY`  | $v(t) = V + v'(t)$ |
-            | `VelocityZ1` | $w(t) = W + w'(t)$ |
+            col1,col2 = st.columns(2)
             
+            with col1:
+                r"""
+                Each component of the velocity timeseries $u_i(x,t)$ can be decomposed 
+                into its mean $\overline{u_i}$ and a series of fluctuations $u'(x,t)$. 
+                
+                $$
+                u_i(x,t) = \overline{u_i}(x) + u'_i(x,t)
+                $$
+                """
+            
+            with col2:
+                """
+                For our ADV data:
+
+                | Component    | Decomposition      | 
+                |--------------|--------------------|
+                | `VelocityX`  | $u(t) = \overline{u} + u'(t)$ |
+                | `VelocityY`  | $v(t) = \overline{v} + v'(t)$ |
+                | `VelocityZ1` | $w(t) = \overline{w} + w'(t)$ |
+                """
+
+            """
             ****
             Notice that from our dataset we only need a few columns: 
             - `time`
@@ -243,7 +272,17 @@ if uploadedFile:
                 meanVel = filtered_vels[direction].mean()
                 
                 fig.add_hline(y = meanVel,
-                    name = "Mean", row = 1, col = i)
+                    annotation={
+                        'text':"Mean",
+                        'font_size':12,
+                        'bgcolor':"rgba(0,0,0,0.2)"
+                        },
+                    annotation_position="top left",
+                    line = {
+                        'width':2,
+                        'dash':'dash'
+                        },
+                    row = 1, col = i)
                 
                 ## Save in session state
                 st.session_state["_gist"][i] = meanVel
@@ -282,7 +321,8 @@ if uploadedFile:
             cols = st.columns(4)
 
             z,u,v,w = st.session_state['_gist']
-            
+            d = st.session_state["_flumeDepth"]
+
             with cols[0]: 
                     st.metric("Elevation:",f"{z:.3f} m")
 
@@ -292,14 +332,69 @@ if uploadedFile:
                         f"Velocity {direction}:",
                         f"{st.session_state['_gist'][i+1]:.3f} ᵐ/ₛ")
 
-            """
-            After doing this analysis for all the measured elevations (i.e., all
-            the ADV files), you will have the information to start buildind the 
-            velocity profile! 
+            col1, col2 = st.columns(2)
+            
+            with col1:
+                """
+                ****
+                
+                After doing this analysis for all the measured elevations (i.e., all
+                the ADV files), you will have the information to start buildind the 
+                velocity profile! 
 
-            ****
+                Check the next page about the other information that can be extracted
+                from the velocity measurements at a single point.
+                """
 
-            Check the next page about the other information that can be extracted
-            from the velocity measurements at a single point.
-            """
+            with col2:
+                fig = go.Figure()
+                    
+                fig.update_layout(
+                    showlegend=False,
+                    autosize=True,
+                    hovermode='closest',
+                    height=400,
+                    title={
+                        'text': "📈 My velocity profile",
+                            'y': 0.9,
+                            'x': 0.5,
+                            'xanchor': 'center',
+                            'yanchor': 'top'},
+                        xaxis={
+                            'title':"Velocity (m/s)",
+                            'exponentformat' : "power"},
+                        yaxis={
+                            'title':"Elevation (m)",
+                            'exponentformat' : "power",
+                            'range':[0,1.1*d]},
+                        font={
+                            'size': 14}
+                )
 
+                fig.add_trace(
+                    go.Scatter(
+                        x = [u],
+                        y = [z],
+                        name = "Sampling position",
+                        mode = 'markers',
+                        marker={'size' : 10,
+                                'symbol': "circle-dot" }
+                        )
+                    )
+
+                fig.add_hline(
+                    y=d,
+                    annotation={
+                        'text':"Water surface",
+                        'font_size':12,
+                        'font_color': "#1E90FF"     
+                    },
+                    annotation_position="top left",
+                    line = {
+                        'width':2,
+                        'color':"#1E90FF",
+                        'dash':'dash'
+                        }
+                    )
+
+                st.plotly_chart(fig,use_container_width=True)

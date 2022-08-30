@@ -10,10 +10,6 @@ st.set_page_config(
 r"""
 # **Uniform flow and analysis from macro parameters**
 
-## Flow rate $Q$
-
-This was measured with the flowmeter in the return pipe of the channel.
-
 ## Channel dimensions
 
 The **depth** $y$ of the channel was measured in the lab, whereas the width 
@@ -36,11 +32,24 @@ $$
     R_H = \dfrac{A_C}{P_W}
 $$
 
-### Slope $S_0$
+Finally, the channel slope $S_0$ was measured during the lab.
 
-## Mean velocity $U$
+## Flow parameters
 
-## Reynolds number $\mathcal{R}$
+The volumetric **flow rate** $Q$ was measured with the flowmeter in the 
+return pipe of the channel. The **bulk velocity** $U$
+
+$$
+    U = \dfrac{Q}{A_C}
+$$
+
+The Reynolds number $\mathcal{R}$ for a channel is defined as
+
+$$
+    \mathcal{R} = \dfrac{4 U R_H}{\nu}
+$$
+
+Where \nu is the kinematic viscosity of water
 
 ## Shear stress
 
@@ -50,18 +59,31 @@ $$
     \tau_0 = \rho g R_H S_0
 $$
 
-Where \rho is the water density and g is the gravitational acceleration
+Where \rho is the water density and g is the gravitational acceleration. 
 The shear velocity $u^*$ is:
 
 $$
     u^* = \sqrt{\dfrac{\tau_0}{\rho}}
 $$
 
+The Darcy-Weisbach equation for open channel flow is 
 
-### Darcy-Weisbach friction factor $f$
+$$
+    S_f = f \dfrac{1}{4R_H}\dfrac{U^2}{2g}
+$$
 
-### Roughness height $k_s$
+where $f$ is the friction factor and $S_f$ is the energy line slope, which, for
+uniform flow is assumed to be equal to the channel slope $S_0$
 
-### Thickness of the laminar sublayer $\delta$
+Semi-empirical relationships exist between the Reynolds number, the friction
+factor and the bottom roughness $k_s$, for instance,
+
+$$
+    \dfrac{1}{\sqrt{f}} = -2 \log{\left( \dfrac{k_s}{12R_H} + \dfrac{2.5}{\mathcal{R}\sqrt{f}} \right)}
+$$
+
+### Boundary layer
+
+The thickness of the laminar sublayer $\delta$
 
 """
