@@ -11,13 +11,9 @@ st.set_page_config(
 
 
 r"""
-# **Turbulence analysis**
+# 🌀 **Reynolds decomposition**
 
-> 🤔 What else needs to be calculated?
-
-## Reynolds decomposition 
-
-The decomposition of the velocity into its temporal mean and their
+The separation of the velocity into its temporal mean and their
 fluctuations is known as the **Reynolds decomposition**. Notice that 
 the mean velocity is constant over time, but it is still a function 
 of the position of our measurement.  

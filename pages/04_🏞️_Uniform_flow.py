@@ -8,7 +8,7 @@ st.set_page_config(
  )
 
 r"""
-# **Uniform flow and analysis from macro parameters**
+# 🏞️ **Uniform flow characterization**
 
 ## Channel dimensions
 
@@ -59,7 +59,7 @@ $$
     \tau_0 = \rho g R_H S_0
 $$
 
-Where \rho is the water density and g is the gravitational acceleration. 
+Where $\rho$ is the water density and $g$ is the gravitational acceleration. 
 The shear velocity $u^*$ is:
 
 $$
