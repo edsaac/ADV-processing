@@ -25,7 +25,7 @@ def shearStressPlot():
             x = x,
             y = tau,
             mode = 'lines',
-            name = 'Total shear stress',
+            name = 'Total',
             line = {
                 'width' : 5
                 }
@@ -37,7 +37,7 @@ def shearStressPlot():
             x = x,
             y = tauViscosity,
             mode = 'lines',
-            name = 'Viscous shear stress',
+            name = 'Viscous',
             line = {
                 'width' : 5
                 }
@@ -49,7 +49,7 @@ def shearStressPlot():
             x = x,
             y = tauReynolds,
             mode = 'lines',
-            name = 'Reynolds shear stress',
+            name = 'Reynolds',
             line = {
                 'width' : 5
                 }
@@ -68,7 +68,7 @@ def shearStressPlot():
             'xanchor': 'center',
             'yanchor': 'top'},
         xaxis={
-            'title':r"Normalized shear stress  <i>τ(y)</i>",
+            'title':r"Normalized shear stress  <i>τ(y)/τ₀</i>",
             'exponentformat' : "power",
             'range':[-0.01,1.05]},
         yaxis={
@@ -84,7 +84,7 @@ def velocityProfilePlot(controlContainer):
     y = np.linspace(1.0E-10,0.11,11)
     u = np.array([0,0.04,0.06,0.09,0.10,0.11,0.105,0.11,0.11])
     
-    yfit = np.linspace(1.0E-10,0.15,111)
+    yfit = np.geomspace(1.0E-10,0.15,111)
     
     with controlContainer:
         st.markdown("<br>"*3,unsafe_allow_html=True)
@@ -228,9 +228,26 @@ st.error(
     """,icon="♾️")
 
 r"""
+
+### Transverse and vertical velocity profiles
+
+Likewise, you must have obtained a series of 
+(temporal) mean velocities over depth for the transverse and vertical
+components of the velocity vector, i.e., $\overline{v}(y)$ and $\overline{w}(y)$. 
+These profiles don't follow any particular distribution, although you might
+be able to discern that the vertical velocity is not exactly zero but slightly 
+upwards around the stoss side of the dunes.
+"""
+
+st.warning("Which is the vertical component of the ADV velocity readings?", icon="⬆️")
+
+r"""
 ### Reynolds stress profiles
+
 Similarly, you must have obtained the six components that make 
-up the Reynolds stress tensor, each as a function of depth $\tau'_{ij}(y)$
+up the Reynolds stress tensor, each as a function of depth $\tau'_{ij}(y)$.
+These profiles, along the turbulent kinetic energy $k(y)$ will be important 
+to complete the turbulence characterization of this laboratory. 
 
 """
 
@@ -304,8 +321,9 @@ $$
 
 st.info(
     """
-    :balloon: Since this derivative was already calculated,
-    you already found the **shear velocity** at the bottom!""")
+    Since this derivative was already calculated,
+    you already found the **shear velocity** at the bottom!""",
+    icon="🎈")
 
 """
 
@@ -325,10 +343,20 @@ is most important
 
 st.plotly_chart(shearStressPlot(),use_container_width=True)
 
-st.warning("Which is the vertical component of our velocity readings?")
+r"""
 
+"""
 
 r"""
+
+### The viscous sublayer
+
+For this region, the viscous shear stress dominates and the 
+velocity distribution follows a linear distribution
+
+$$
+    u^+ = y^+
+$$
 
 ### The log-law
 
@@ -336,23 +364,19 @@ For the **log-law** region of a channel flow, the velocity distribution
 is given by:
 
 $$
-    u^+ = \dfrac{1}{\kappa} \ln{y^+} + B
+    u^+ = \dfrac{1}{\kappa} \ln{y^+} + b
 $$
 
-Where $\kappa = 0.41$ is the von Kármán constant and $B = 5.2$ 
+Where $\kappa = 0.41$ is the von Kármán constant and $b = 5.2$ 
 is a fitting constant.
 """
 
 st.info(
     r"""
-    How can you connect the log-law with the curve $u_{\textsf{fit}}(y)$ 
+    How can you relate the log-law with the curve $u_{\textsf{fit}}(y)$ 
     that you used to fit to your data?""")
 
 r"""
-## Other velocity profiles
-
-:Notice how water goes up and downwards?:
-
 ## Reynolds stresses profiles
 
 ### Shear stress $\tau_0$ and shear velocity $u^*$
