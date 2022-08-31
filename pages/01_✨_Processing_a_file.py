@@ -12,7 +12,7 @@ st.set_page_config(
     page_icon="✨",
     layout="wide",
     initial_sidebar_state="collapsed"
- )
+)
 
 if "_gist" not in st.session_state.keys():
     st.session_state["_gist"] = [0,0,0,0]
@@ -29,9 +29,8 @@ time series:
 - **Bottom distance** readings
 - **Velocity** measurements
 
-Both occur at different frequencies, for example, bottom distances 
-are measured once every second whereas velocities can be read up to 
-50 times per second. 
+Bottom distances are measured once every second whereas 
+velocities can be read up to 50 times per second. 
 """)
 
 st.info(
