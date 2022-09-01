@@ -194,17 +194,27 @@ r"""
 
 Having processed all the ADV files, you must have obtained a series of 
 (temporal) mean velocities over depth $\overline{u}(y)$. 
-This profile should look  something like the sketched plot below.
-
-Try to fit a curve to your profile data. The curve should be of the form 
-
-$$
-    u_{\textsf{fit}}(y) = A + B \left( 1 + \ln{\left(\dfrac{y}{d}\right)} \right)
-$$
-
-Where $A$ and $B$ are fitting parameters and $d$ is the flume depth.
-
+For the principal direction $x$, the profile should roughly look like the 
+one sketched in the plot below.
 """
+st.warning(
+    r"""
+    Try to fit a logarithmic curve to your profile data, e.g.,
+
+    $$
+        u_{\textsf{fit}}(y) = A + B \left( 1 + \ln{\left(\dfrac{y}{d}\right)} \right)
+    $$
+
+    where $A$ and $B$ are fitting parameters and $d$ is the flume depth.?
+
+    """,icon="🤔")
+
+st.info(
+    r"""
+    **To do:**
+
+    Find the best-fitting curve for your own data.
+    """, icon="☑️")
 
 col1,col2 = st.columns([1,2.5])
 
@@ -223,12 +233,14 @@ $$
 
 st.error(
     r"""
-    But $B/y$ is undefined at $y=0$
-    What other way could you estimate this derivative?
+    But $B/y$ is undefined at $y=0$ 
+    
+    🤔 Can you explain why and 
+    how to evaluate this derivative?
     """,icon="♾️")
 
 r"""
-
+****
 ### Transverse and vertical velocity profiles
 
 Likewise, you must have obtained a series of 
@@ -242,6 +254,7 @@ upwards around the stoss side of the dunes.
 st.warning("Which is the vertical component of the ADV velocity readings?", icon="⬆️")
 
 r"""
+****
 ### Reynolds stress profiles
 
 Similarly, you must have obtained the six components that make 
@@ -250,6 +263,13 @@ These profiles, along the turbulent kinetic energy $k(y)$ will be important
 to complete the turbulence characterization of this laboratory. 
 
 """
+
+st.info(
+    r"""
+    **To do:**
+
+    Plot each of the six components of the Reynolds stress tensor as a function of depth.
+    """, icon="☑️")
 
 ###########################################3
 # Section 2: Theory
@@ -308,25 +328,27 @@ stress is also zero. Therefore,
 
 $$
     \begin{array}{rl}
-
-    \tau_0 =& \tau(y=0) \\
+        \tau_0 =& \tau(y=0) \\
         \\
         =& \rho \nu \left(\dfrac{d \overline{u}}{dy}\right)\Big|_{y=0} - \cancel{\rho\overline{u'v'}} \\
         \\
         =& \rho \nu \left(\dfrac{d \overline{u}}{dy}\right)\Big|_{y=0}
-\end{array}
-    
+    \end{array}
 $$
 """
 
 st.info(
     """
     Since this derivative was already calculated,
-    you already found the **shear velocity** at the bottom!""",
+    you already found the **shear velocity** at the bottom!
+    
+    If you haven't, the next section should make more clear why 
+    the log-law cannot be used to evaluate $du/dy$ at $y=0$.
+    """,
     icon="🎈")
 
-"""
-
+r"""
+****
 ### Wall zones
 
 In a wall-bounded flow such as the channel from our lab, three zones
@@ -349,7 +371,7 @@ r"""
 
 r"""
 
-### The viscous sublayer
+#### The viscous sublayer
 
 For this region, the viscous shear stress dominates and the 
 velocity distribution follows a linear distribution
@@ -358,7 +380,7 @@ $$
     u^+ = y^+
 $$
 
-### The log-law
+#### The log-law
 
 For the **log-law** region of a channel flow, the velocity distribution
 is given by:
@@ -373,10 +395,14 @@ is a fitting constant.
 
 st.info(
     r"""
-    How can you relate the log-law with the curve $u_{\textsf{fit}}(y)$ 
-    that you used to fit to your data?""")
+    **To do:**
+
+    Compare the log-law definition with the curve $u_{\textsf{fit}}(y)$ 
+    that you found from fitting your data.
+    """, icon="☑️")
 
 r"""
+****
 ## Reynolds stresses profiles
 
 ### Shear stress $\tau_0$ and shear velocity $u^*$

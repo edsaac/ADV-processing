@@ -9,10 +9,14 @@ from plotly.subplots import make_subplots
 
 st.set_page_config(
     page_title="[NU CEE440] - Processing a single file",
-    page_icon="✨",
+    page_icon="🖥️",
     layout="wide",
     initial_sidebar_state="collapsed"
 )
+
+def restart():
+    if "upfile" in st.session_state.keys():
+        del st.session_state.upfile
 
 if "_gist" not in st.session_state.keys():
     st.session_state["_gist"] = [0,0,0,0]
@@ -22,8 +26,7 @@ if "_flumeDepth" not in st.session_state.keys():
 
 "# **Data processing for turbulence analysis**"
 
-st.info(
-"""
+r"""
 Each file gathered by the instrument consists of two
 time series: 
 - **Bottom distance** readings
@@ -31,7 +34,7 @@ time series:
 
 Bottom distances are measured once every second whereas 
 velocities can be read up to 50 times per second. 
-""")
+"""
 
 st.info(
 """
@@ -44,15 +47,25 @@ velocity fluctuation time series.
 
 """)
 
-st.warning("Let's start exploring a file:")
+r"""
+****
+## Let's start exploring a file:
+"""
 
-with st.expander("Upload a netCDF4 file from the Vectrino Profiler 👇",
-                 expanded=("upfile" not in st.session_state)):
-    uploadedFile = st.file_uploader("","nc",False,key="upfile")
+col1, col2 = st.columns([4,1])
+
+with col1:
+    with st.expander("Upload a netCDF4 file from the Vectrino Profiler 👇", expanded=("upfile" not in st.session_state)):
+        uploadedFile = st.file_uploader("","nc",False,key="upfile")
+
+with col2:
+    if st.button("I don't have a file"):
+            with open("./assets/dummyADV.nc","rb") as f:
+                st.download_button("Click here to download a dummy file",f.read(),"dummyADV.nc")
 
 "****"
 
-if uploadedFile:
+if uploadedFile and ("upfile" in st.session_state.keys()):
 
     step_int = stx.stepper_bar(steps=["🏜️ Bottom Distance", "⏱️ Velocity Readings", "☀️ Summary"])
 
@@ -354,7 +367,7 @@ if uploadedFile:
                     hovermode='closest',
                     height=400,
                     title={
-                        'text': "📈 My velocity profile",
+                        'text': "📈 My file in the velocity profile",
                             'y': 0.9,
                             'x': 0.5,
                             'xanchor': 'center',
@@ -397,3 +410,5 @@ if uploadedFile:
                     )
 
                 st.plotly_chart(fig,use_container_width=True)
+
+            st.button("↻ I have another file",key="restart_btn",help="Click here to restart.",on_click=restart)

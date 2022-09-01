@@ -1,3 +1,4 @@
+from pprint import isrecursive
 import pandas as pd
 import streamlit as st
 import extra_streamlit_components as stx
@@ -13,16 +14,15 @@ st.set_page_config(
 r"""
 # 🌀 **Reynolds decomposition**
 
-The separation of the velocity into its temporal mean and their
-fluctuations is known as the **Reynolds decomposition**. Notice that 
-the mean velocity is constant over time, but it is still a function 
-of the position of our measurement.  
+The separation of the velocity into its temporal mean \overline{u_i} and their
+fluctuations u'_i is known as the **Reynolds decomposition**. The mean velocity 
+is constant over time, but it is still a function of the position of our measurement $x$.  
 
 $$
     u_i(x,t) = \overline{u_i}(x) + u'_i(x,t)
 $$
 
-Where the subindex $i$ represents either the x,y or z direction of the
+Where the subindex $i$ represents either the $x$,$y$ or $z$ direction of the
 velocity vector field. A property of the Reynolds decomposition is that 
 the mean of the velocity fluctuations must be zero:
 
@@ -33,14 +33,14 @@ $$
 
 st.info(
     r"""
-    ☑️ To do:
+    **To do:**
 
-    - Check that the mean of the fluctuations is actually zero. 
-    """)
+    Check that the mean of the fluctuations is actually zero.
+    """, icon="☑️")
 
 r"""
-However, the mean of the product between fluctuations is not going to be
-zero. Instead, the mean of the possible velocity fluctuation are used 
+In contrast, the mean of the product between fluctuations \overline{u_i'u_j'} 
+is not zero. Instead, the mean of the possible velocity fluctuation is used 
 to calculate the **Reynolds stress** tensor $\tau'_{ij}$
 
 $$
@@ -60,7 +60,7 @@ $$
     \end{pmatrix} 
 $$
 
-Notice that this is a symmetric tensor because $\tau'_{ij} = \tau'_{ji}$, so 
+Notice that this is a symmetric tensor (i.e., $\tau'_{ij} = \tau'_{ji}$), so 
 only six of the nine elements in the tensor need to be calculated.
 
 $$
@@ -74,18 +74,20 @@ $$
         \cdots          & \vdots          & \overline{w'w'}  \\
     \end{pmatrix}
 $$
-
-> 🤔 The terms in the diagonal of $\tau'_{ij}$ are always positive.
-> Can you show why?
-
 """
+st.warning(
+    r"""
+    The terms in the diagonal of $\tau'_{ij}$ are always positive.
+    
+    Can you show why?
+    """,icon="🤔")
 
 st.info(
     r"""
-    ☑️ To do:
+    **To do:**
 
-    - Calculate the six components of the Reynolds stress $\tau'_{ij}$
-    """)
+    Calculate the six components of the Reynolds stress $\tau'_{ij}$
+    """, icon="☑️")
 
 r"""
 *****
@@ -100,20 +102,28 @@ $$
     k = \tfrac{1}{2} \mathrm{tr}(\tau'_{ij}) 
       = \tfrac{1}{2} \left( \tau'_{xx} + \tau'_{yy} + \tau'_{zz} \right)
 $$
-
-> 🤔 What are the units of $k$?
-
 """
+
+st.warning(
+    r"""
+    What are the units of $k$?
+
+    """,icon="🤔")
+
 
 st.info(
     r"""
-    ☑️ **To do**:
+    **To do:**
 
-    - Calculate the turbulent kinetic energy $k$
-    """)
+    Calculate the turbulent kinetic energy $k$
+    """, icon="☑️")
+
 
 r"""
+
 ****
+
+## Summary
 
 At this point you have measured and calculated the following quantities 
 for a **single position** $x$.
