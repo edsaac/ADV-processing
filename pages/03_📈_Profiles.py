@@ -3,10 +3,10 @@ import plotly.graph_objects as go
 import numpy as np
 
 st.set_page_config(
-    page_title="[NU CEE440] - Profiles and fitting",
+    page_title="[NU CEE440] Lab 1 - Profiles and fitting",
     page_icon="📈",
     layout="wide",
-    initial_sidebar_state="collapsed")
+    initial_sidebar_state="auto")
 
 ###########################################3
 # Plots 

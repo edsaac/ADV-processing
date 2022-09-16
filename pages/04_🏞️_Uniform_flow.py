@@ -1,10 +1,10 @@
 import streamlit as st
 
 st.set_page_config(
-    page_title="[NU CEE440] - Uniform flow",
+    page_title="[NU CEE440] Lab 1 - Uniform flow",
     page_icon="🏞️",
     layout="wide",
-    initial_sidebar_state="collapsed"
+    initial_sidebar_state="auto"
  )
 
 r"""

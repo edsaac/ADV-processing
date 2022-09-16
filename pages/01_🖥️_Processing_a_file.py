@@ -8,10 +8,10 @@ import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 
 st.set_page_config(
-    page_title="[NU CEE440] - Processing a single file",
+    page_title="[NU CEE440] Lab 1 - Processing a single file",
     page_icon="🖥️",
     layout="wide",
-    initial_sidebar_state="collapsed"
+    initial_sidebar_state="auto"
 )
 
 def restart():
