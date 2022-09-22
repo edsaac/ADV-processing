@@ -401,15 +401,15 @@ st.info(
     that you found from fitting your data.
     """, icon="☑️")
 
-r"""
-****
-## Reynolds stresses profiles
+# r"""
+# ****
+# ## Reynolds stresses profiles
 
-### Shear stress $\tau_0$ and shear velocity $u^*$
+# ### Shear stress $\tau_0$ and shear velocity $u^*$
 
-### Friction factor $f$
+# ### Friction factor $f$
 
-## Turbulent kinetic energy profile
+# ## Turbulent kinetic energy profile
 
-## Eddy viscosity profile
-"""
+# ## Eddy viscosity profile
+# """
