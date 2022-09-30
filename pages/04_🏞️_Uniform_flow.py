@@ -195,7 +195,7 @@ with col2:
 
 r"""
 Semi-empirical relationships exist between the Reynolds number, the friction
-factor and the bottom roughness $k_s$, like the [Moody chart](https://upload.wikimedia.org/wikipedia/commons/d/d9/Moody_EN.svg)
+factor and the bed roughness $k_s$, like the [Moody chart](https://upload.wikimedia.org/wikipedia/commons/d/d9/Moody_EN.svg)
 and the [Colebrook-White equation](https://en.wikipedia.org/wiki/Darcy_friction_factor_formulae#Colebrook%E2%80%93White_equation) 
 for flow in a pipe. For flow in a channel you can use a similar expression [(Osman, 2006)](https://www.elsevier.com/books/open-channel-hydraulics/akan/978-0-7506-6857-6):
 
@@ -215,7 +215,7 @@ with col1:
 
     st.warning(
         r"""
-        Did we measure the bottom roughness?
+        Did we measure the roughness height $k_s$?
         """,icon="🤔")
 
 with col2:
@@ -226,4 +226,45 @@ with col2:
         Solve for $k_s$.
         
         Is the result close to your roughness measurement?
+        """, icon="☑️")
+
+
+r"""
+****
+
+## Roughness height
+
+The roughness height $k_s$ for bed forms could be any size between 
+the sediment grain size $d_{90}$ and the dunes height (a.k.a. amplitude $\Delta$).
+A definition for $k_s$ was presented by ([van Rijn (1984](www.doi.org/10.1061/(ASCE)0733-9429(1984)110:12(1733)), 
+[O'Connor & Harvey (2008](https://doi.org/10.1029/2008WR007160)) to combine both
+posible measures.
+
+$$
+    k_s = 3d_{90} + 1.1 \Delta \left(
+        1 - \exp\left(
+            -\dfrac{25\Delta}{\lambda}
+            \right)
+        \right)
+$$
+
+where $\lambda$ is the bedform lenght. The sand used in these experiments is 
+Flint Silica 12 (US Silica, Ottawa, IL) with a $d_{50} = 0.42 \, \mathrm{mm}$.
+"""
+
+col1, col2 = st.columns(2)
+
+with col1:
+    st.warning(
+        r"""
+        What are the units of $k_s$?
+        """,icon="🤔")
+
+with col2:
+    st.info(
+        r"""
+        **To do:**
+
+        Report your bed form geometry measurements and compare the $k_s$ 
+        estimations from this and the previous sections.
         """, icon="☑️")

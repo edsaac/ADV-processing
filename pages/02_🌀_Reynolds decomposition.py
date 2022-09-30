@@ -14,7 +14,7 @@ st.set_page_config(
 r"""
 # 🌀 **Reynolds decomposition**
 
-The separation of the velocity into its temporal mean \overline{u_i} and their
+The separation of the velocity into its temporal mean $\overline{u_i}$ and their
 fluctuations u'_i is known as the **Reynolds decomposition**. The mean velocity 
 is constant over time, but it is still a function of the position of our measurement $x$.  
 
@@ -39,7 +39,7 @@ st.info(
     """, icon="☑️")
 
 r"""
-In contrast, the mean of the product between fluctuations \overline{u_i'u_j'} 
+In contrast, the mean of the product between fluctuations $\overline{u_i'u_j'}$ 
 is not zero. Instead, the mean of the possible velocity fluctuation is used 
 to calculate the **Reynolds stress** tensor $\tau'_{ij}$
 
