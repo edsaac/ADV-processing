@@ -1,10 +1,10 @@
 import streamlit as st
 
 st.set_page_config(
-    page_title="[NU CEE440] - Uniform flow",
+    page_title="[NU CEE440] Lab 1 - Uniform flow",
     page_icon="🏞️",
     layout="wide",
-    initial_sidebar_state="collapsed"
+    initial_sidebar_state="auto"
  )
 
 r"""
@@ -19,7 +19,7 @@ with cols[0]:
     r"""
 
     The **depth** $y$ of the channel was measured in the lab, whereas the width 
-    is $L_w = 0.29 \, \mathrm{m}$ for the flume used. 
+    is $L_w = 0.205 \, \mathrm{m}$ for the flume used. 
 
     For a rectangular channel, the **cross-sectional** area $A_C$ and the 
     **wetted perimeter** $P_W$ are given by
@@ -60,7 +60,7 @@ with col1:
     st.warning(
     r"""
     What is the diference between the friction slope $S_f$ and the channel bottom 
-    slope $S_0$. Which one did we measured?
+    slope $S_0$. Which one did we measure?
 
     """,icon="🤔")
 

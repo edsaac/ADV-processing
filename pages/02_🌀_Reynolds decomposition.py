@@ -4,10 +4,10 @@ import streamlit as st
 import extra_streamlit_components as stx
 
 st.set_page_config(
-    page_title="[NU CEE440] - Turbulence analysis",
+    page_title="[NU CEE440] Lab 2 - Turbulence analysis",
     page_icon="🌀",
     layout="wide",
-    initial_sidebar_state="collapsed"
+    initial_sidebar_state="auto"
 )
 
 
