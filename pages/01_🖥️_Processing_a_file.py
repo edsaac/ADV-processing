@@ -238,7 +238,7 @@ if uploadedFile and ("upfile" in st.session_state.keys()):
                 """
             
             with col2:
-                """
+                r"""
                 For our ADV data:
 
                 | Component    | Decomposition      | 
@@ -248,7 +248,7 @@ if uploadedFile and ("upfile" in st.session_state.keys()):
                 | `VelocityZ1` | $w(t) = \overline{w} + w'(t)$ |
                 """
 
-            """
+            r"""
             ****
             Notice that from our dataset we only need a few columns: 
             - `time`
