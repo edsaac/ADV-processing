@@ -26,26 +26,32 @@ if "_flumeDepth" not in st.session_state.keys():
 
 "# **Data processing for turbulence analysis**"
 
-r"""
-Each file gathered by the instrument consists of two
-time series: 
-- **Bottom distance** readings
-- **Velocity** measurements
+cols = st.columns([1,2])
 
-Bottom distances are measured once every second whereas 
-velocities can be read up to 50 times per second. 
-"""
+with cols[0]:
+    st.image("assets/adv_detail.jpg")
 
-st.info(
-"""
-🏜️ We will use the bottom distance timeseries to check that the bedforms did
-not migrate substantially and will get the location at which
-the corresponding velocities were taken.
+with cols[1]:
+    r"""
+    Each file gathered by the instrument consists of two
+    time series: 
+    - **Bottom distance** readings
+    - **Velocity** measurements
 
-⏱️ Then, we use the velocity readings to extract their mean over time and the
-velocity fluctuation time series.
+    Bottom distances are measured once every second whereas 
+    velocities can be read up to 50 times per second. 
+    """
 
-""")
+    st.info(
+    """
+    🏜️ We will use the bottom distance timeseries to check that the bedforms did
+    not migrate substantially and will get the location at which
+    the corresponding velocities were taken.
+
+    ⏱️ Then, we use the velocity readings to extract their mean over time and the
+    velocity fluctuation time series.
+
+    """)
 
 r"""
 ****

@@ -33,7 +33,7 @@ with cols[0]:
     $$
     """
 
-    """
+    r"""
     The ratio between these two quantities give the **hydraulic radius** $R_H$
 
     $$
@@ -72,7 +72,7 @@ with col2:
         Calculate $R_H$ and $S_f$.
         """, icon="☑️")
 
-"""
+r"""
 ****
 ## Flow parameters
 """
@@ -236,7 +236,7 @@ r"""
 
 The roughness height $k_s$ for bed forms could be any size between 
 the sediment grain size $d_{90}$ and the dunes height (a.k.a. amplitude $\Delta$).
-A definition for $k_s$ was presented by ([van Rijn (1984](www.doi.org/10.1061/(ASCE)0733-9429(1984)110:12(1733)), 
+A definition for $k_s$ was presented by ([van Rijn (1984)](www.doi.org/10.1061/(ASCE)0733-9429(1984)110:12(1733)), 
 [O'Connor & Harvey (2008](https://doi.org/10.1029/2008WR007160)) to combine both
 posible measures.
 
