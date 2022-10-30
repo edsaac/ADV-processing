@@ -33,7 +33,9 @@ with cols[0]:
 with cols[1]:
     r"""
     > **🔎 References:**
+    > - [Pope S. (2000)](https://doi.org/10.1017/CBO9781316179475) Turbulent flows. Cambridge, NY. Cambridge University Press.
     > - [Nortek Vectrino: The Comprehensive Manual - Velocimeters](https://support.nortekgroup.com/hc/en-us/articles/360029839351-The-Comprehensive-Manual-Velocimeters)
+
 
     > - [Whitaker J., et al. (2020)](https://doi.org/10.5281/zenodo.4308773). Unidata/netcdf4-python: version 1.5.5 release (v1.5.5rel2). Zenodo.
     > - [Hunter J. D. (2007)](https://doi.org/10.1109/MCSE.2007.55), "Matplotlib: A 2D Graphics Environment", Computing in Science & Engineering, vol. 9, no. 3, pp. 90-95.
