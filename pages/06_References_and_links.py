@@ -9,7 +9,7 @@ st.set_page_config(
 
 st.title("References and links")
 
-with st.expander("Links and more information"):
+with st.expander("Links and more information", expanded=True):
     """
     🔎 [Nortek Vectrino: The Comprehensive Manual - Velocimeters](https://support.nortekgroup.com/hc/en-us/articles/360029839351-The-Comprehensive-Manual-Velocimeters)
     """
