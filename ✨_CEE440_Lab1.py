@@ -1,7 +1,7 @@
 import streamlit as st
 
 st.set_page_config(
-    page_title="CE440 Laboratory #1",
+    page_title="edsaac.me · Turbulence and Open Channel Flow Lab",
     page_icon="✨",
     layout="wide",
     initial_sidebar_state="expanded"
